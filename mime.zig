@@ -27,6 +27,7 @@ pub const Type = enum(u16) {
     @"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
     @"application/vnd.rar",
     @"application/vnd.visio",
+    @"application/wasm",
     @"application/x-7z-compressed",
     @"application/x-abiword",
     @"application/x-bzip",
@@ -77,7 +78,7 @@ pub const Type = enum(u16) {
 };
 
 /// Maps file extension to mime type.
-pub const extension_map = std.ComptimeStringMap(Type, .{
+pub const extension_map = std.StaticStringMap(Type).initComptime(.{
     .{ ".aac", .@"audio/aac" },
     .{ ".abw", .@"application/x-abiword" },
     .{ ".arc", .@"application/x-freearc" },
@@ -138,6 +139,7 @@ pub const extension_map = std.ComptimeStringMap(Type, .{
     .{ ".ttf", .@"font/ttf" },
     .{ ".txt", .@"text/plain" },
     .{ ".vsd", .@"application/vnd.visio" },
+    .{ ".wasm", .@"application/wasm" },
     .{ ".wav", .@"audio/wav" },
     .{ ".weba", .@"audio/webm" },
     .{ ".webm", .@"video/webm" },
